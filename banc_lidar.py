@@ -8,12 +8,13 @@ GRO120: Banc de test lidar
            3. Écrire les données filtrées dans un fichier texte (sortie)
            4. Afficher les valeurs statistiques des données filtrées valides (>=0)
 
-Auteurs: Vincent Duchesne
-Date: 30/09/2026
-""" 
+Auteurs: Simon Lacroix et Vincent Duchesne
+Date: 07/10/2026
+"""
 
 import sys
-import filtrage #Importer le fichier qui comporte les trois différents filtre à appliquer
+import filtrage  #Importer le fichier qui comporte les trois différents filtre à appliquer
+
 
 #Créer une fonction qui permet de transformer un fichier texte en liste
 #Cette liste permettra ensuite de filtrer les données d'entrées
@@ -23,16 +24,21 @@ def lire_fichier(nom_fichier):
     donnee_liste = []
 
     #Créer un with afin de parcourir chaque ligne du fichier et de le mettre dans la nouvelle liste
-    with open(nom_fichier, "r") as fichier: #Ouvre le fichier en mode lecture
+    with open(nom_fichier, "r") as fichier:  #Ouvre le fichier en mode lecture
 
-        for ligne in fichier:     #Sert a parcourir le fichier ligne par ligne
-            valeur = float(ligne) #Sert à transformer les valeur qui sont en string en float
-            donnee_liste.append(valeur) #Sert à mettre les valeurs de chaque ligne dans la nouvelle liste
+        for ligne in fichier:  #Sert a parcourir le fichier ligne par ligne
+            valeur = float(
+                ligne
+            )  #Sert à transformer les valeur qui sont en string en float
+            donnee_liste.append(
+                valeur
+            )  #Sert à mettre les valeurs de chaque ligne dans la nouvelle liste
 
     return donnee_liste
 
 
 #Créer une fonction qui permet de renvoyer les statistiques à l'utilisateur
+
 
 def stat(donnee_liste, nom_fichier):
 
@@ -41,31 +47,32 @@ def stat(donnee_liste, nom_fichier):
     for donnee in donnee_liste:
         if (donnee < minimum):
             minimum = donnee
-    print("Le minimum est :",minimum)
+    print("Le minimum est :", minimum)
 
-#======================================
+    #======================================
 
     #Afficher la valeur maximale
     maximum = 0
     for donnee in donnee_liste:
         if (donnee > maximum):
             maximum = donnee
-    print("Le maximum est :",maximum)
+    print("Le maximum est :", maximum)
 
-#======================================
+    #======================================
 
     #Afficher la médiane
     mediane = 0
     longueur_liste = (len(donnee_liste)) - 1
     if (0 == (len(donnee_liste)) % 2):
-        mediane = (donnee_liste[(longueur_liste / 2)] + donnee_liste[(longueur_liste / 2) + 1]) / 2
+        mediane = (donnee_liste[(longueur_liste / 2)] +
+                   donnee_liste[(longueur_liste / 2) + 1]) / 2
     else:
         mediane = donnee_liste[longueur_liste + 0.5]
 
-    print("La médiane est :",mediane)
- 
-#======================================
-    
+    print("La médiane est :", mediane)
+
+    #======================================
+
     #Afficher la valeur moyenne
     numerateur = 0
     denominateur = 0
@@ -75,19 +82,7 @@ def stat(donnee_liste, nom_fichier):
 
     moyenne = numerateur / denominateur
 
-    print("La moyenne est :",moyenne)
-
-
-
-
-    
-
-
-
-
-
-
-
+    print("La moyenne est :", moyenne)
 
 
 #===========================================
@@ -96,5 +91,5 @@ if __name__ == "__main__":
     DESC: Point d'entrée du programme
     """
     print("Test lidar (GRO120)")
-    
-    # Code à compléter...
+
+    # Code à compléter..."""
