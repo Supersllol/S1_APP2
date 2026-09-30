@@ -46,7 +46,7 @@ def filtre_moyenne_mobile(points):
     RETOUR: Tableau de données filtrées
     """
     # nouvelle liste de points pour éviter de modifier l'originale
-    pointsFiltres = []
+    points_filtres = []
 
     # itérer à travers les points
     for index in range(len(points)):
@@ -62,11 +62,12 @@ def filtre_moyenne_mobile(points):
 
         # faire la moyenne des éléments
         moyenne = sum(elements) / len(elements)
-        # ajouter le nouveau point calculé
-        pointsFiltres.append(moyenne)
+        # ajouter le nouveau point calculé à une décimale
+        if (moyenne < 10 and moyenne > 9.7): print(moyenne)
+        points_filtres.append(round(moyenne, 1))
 
     # retourner le tableau de données filtrées
-    return pointsFiltres
+    return points_filtres
 
 
 def filtre_mediane_mobile(points):
@@ -78,20 +79,20 @@ def filtre_mediane_mobile(points):
     RETOUR: Tableau de données filtrées
     """
     # nouvelle liste de points pour éviter de modifier l'originale
-    pointsFiltres = []
+    points_filtres = []
 
     # itérer à travers les points
     for index in range(len(points)):
         # si c'est le premier ou dernier élément, garder le même point
         if ((index == 0) or (index == len(points) - 1)):
-            pointsFiltres.append(points[index])
+            points_filtres.append(points[index])
         # sinon, prendre en compte le point original et les points précédant et suivant
         else:
             elements = [points[index - 1], points[index], points[index + 1]]
             # organiser les éléments en ordre croissant
             elements.sort()
             # prendre la médiane (le 2e élément)
-            pointsFiltres.append(elements[1])
+            points_filtres.append(elements[1])
 
     # retourner le tableau de données filtrées
-    return pointsFiltres
+    return points_filtres
