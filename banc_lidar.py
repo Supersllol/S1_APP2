@@ -72,6 +72,7 @@ def stat(donnee_liste):
     maximum = 0
     somme = 0
     nb_pt_valide = 0
+    liste_pt_valide = []
     for donnee in donnee_liste:
         # Seulement tenir compte des points valides
         if (donnee >= 0):
@@ -89,13 +90,21 @@ def stat(donnee_liste):
             # Garder un compteur du nombre de points valides
             nb_pt_valide += 1
 
+            #Mettre les données valides dans une liste afin de calculer la médiane
+            liste_pt_valide.append(donnee)
+
+            #Trouver la longueur de la liste
+            longueur_liste_valide = len(liste_pt_valide)
+        
+
+
     # Afficher les statistiques calculées
     print("Le minimum est :", minimum)
     print("Le maximum est :", maximum)
     """
     ICI moyenne et mediane utilisent les infos de toute la liste mais devraient utiliser seulement les valides
     """
-    moyenne = somme / longueur_liste
+    moyenne = somme / nb_pt_valide 
     print(f"La moyenne est :", round(moyenne, 1))  # Une décimale
 
     # Afficher la médiane avec une décimale
@@ -103,13 +112,13 @@ def stat(donnee_liste):
     donnee_liste.sort()  # Mettre en ordre pour aller chercher la médiane
     # Si longueur paire, faire la moyenne des deux éléments du milieu
     # Exemple: longueur de 6, prendre index 2 et 3
-    if (0 == (longueur_liste) % 2):
-        mediane = (donnee_liste[(longueur_liste // 2)] +
-                   donnee_liste[(longueur_liste // 2) - 1]) / 2
+    if (0 == (longueur_liste_valide) % 2):
+        mediane = (donnee_liste[(longueur_liste_valide // 2)] +
+                   donnee_liste[(longueur_liste_valide // 2) - 1]) / 2
     # Si longueur impaire prendre l'élément du milieu
     # Il correpond à la longueur divisée entière par 2 (ex. 3 => 1):
     else:
-        mediane = donnee_liste[longueur_liste // 2]
+        mediane = donnee_liste[longueur_liste_valide // 2]
 
     print("La médiane est :", round(mediane, 1))
 
