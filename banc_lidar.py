@@ -93,8 +93,7 @@ def stat(donnee_liste):
             #Mettre les données valides dans une liste afin de calculer la médiane
             liste_pt_valide.append(donnee)
 
-            #Trouver la longueur de la liste
-            longueur_liste_valide = len(liste_pt_valide)
+   
         
 
 
@@ -108,6 +107,8 @@ def stat(donnee_liste):
     print(f"La moyenne est :", round(moyenne, 1))  # Une décimale
 
     # Afficher la médiane avec une décimale
+    #Trouver la longueur de la liste
+    longueur_liste_valide = len(liste_pt_valide)
     mediane = 0
     donnee_liste.sort()  # Mettre en ordre pour aller chercher la médiane
     # Si longueur paire, faire la moyenne des deux éléments du milieu
@@ -156,3 +157,6 @@ if __name__ == "__main__":
 
     # Afficher à l'utilisateur les statistiques sur les données
     stat(points_sortie)
+
+
+#Ajouter un section pour demander à l'utilisateur s'il veut ajouter un autre filtre
