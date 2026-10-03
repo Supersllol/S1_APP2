@@ -14,13 +14,12 @@ import filtrage
 #===========================================
 def test_filtre_min_max():
     """
-    DESC: Test la fonction filtre_min_max
+    DESC: Teste la fonction filtre_min_max
     
     NOTE: On fournit un tableau de donnees, qui retourne un tableau filtré 
           selon les valeurs minimum et maximum spécifiées 
     """
 
-    
     donnees = [1, 50, 0]
     reponse = [1, 10, -1]
     test = filtrage.filtre_min_max(donnees, 1, 10)
@@ -29,14 +28,16 @@ def test_filtre_min_max():
     donnees = []
     reponse = []
     test = filtrage.filtre_min_max(donnees, 1, 10)
-    assert test == reponse, f"Erreur: {test} != {reponse}"    
+    assert test == reponse, f"Erreur: {test} != {reponse}"
 
     donnees = [0]
     reponse = [-1]
     test = filtrage.filtre_min_max(donnees, 1, 10)
     assert test == reponse, f"Erreur: {test} != {reponse}"
 
-    donnees = [-234.234, 123456.4, 10 ] #dire dans le rapport que meme si n'est pas un cas qu'on va avoir on test les limite du code
+    donnees = [
+        -234.234, 123456.4, 10
+    ]  #dire dans le rapport que meme si n'est pas un cas qu'on va avoir on test les limite du code
     reponse = [-1, 10, 10]
     test = filtrage.filtre_min_max(donnees, 1, 10)
     assert test == reponse, f"Erreur: {test} != {reponse}"
@@ -57,17 +58,16 @@ def test_filtre_min_max():
     assert test == reponse, f"Erreur: {test} != {reponse}"
 
 
-
 def tests_filtre_moyenne_mobile():
     """
         DESC: Test la fonction filtre_moyenne_mobile
         
         NOTE: Je ne sais pas quoi mettre ici ########################################################### 
         """
-    donnees = [1,3,2,4,5,3]
-    reponse = [2.0,2.0,3.0,3.7,4.0,4.0]
+    donnees = [1, 3, 2, 4, 5, 3]
+    reponse = [2.0, 2.0, 3.0, 3.7, 4.0, 4.0]
     test = filtrage.filtre_moyenne_mobile(donnees)
-    assert test == reponse, f"Erreur: {test} != {reponse}"  
+    assert test == reponse, f"Erreur: {test} != {reponse}"
 
     donnees = []
     reponse = []
@@ -79,8 +79,8 @@ def tests_filtre_moyenne_mobile():
     test = filtrage.filtre_moyenne_mobile(donnees)
     assert test == reponse, f"Erreur: {test} != {reponse}"
 
-    donnees = [3,3]
-    reponse = [3,3]
+    donnees = [3, 3]
+    reponse = [3, 3]
     test = filtrage.filtre_moyenne_mobile(donnees)
     assert test == reponse, f"Erreur: {test} != {reponse}"
 
@@ -126,12 +126,6 @@ def tests_filtre_mediane_mobile():
     reponse = [-1, 0, 5.6, 7, 5.6, 4, -1]
     test = filtrage.filtre_mediane_mobile(donnees)
     assert test == reponse, f"Erreur: {test} != {reponse}"
-
-    
-
-
-
-
 
 
 #===========================================
