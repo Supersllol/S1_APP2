@@ -95,12 +95,14 @@ def filtre_mediane_mobile(points):
 
             if (troisieme < premier < deuxieme
                     or deuxieme < premier < troisieme):
-                points_filtres.append(premier)
+                mediane = premier
             elif (premier < deuxieme < troisieme
                   or troisieme < deuxieme < premier):
-                points_filtres.append(deuxieme)
+                mediane = deuxieme
             else:
-                points_filtres.append(troisieme)
+                mediane = troisieme
+
+            points_filtres.append(mediane)
 
     # retourner le tableau de données filtrées
     return points_filtres

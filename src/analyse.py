@@ -6,6 +6,32 @@ Date: 07/10/2026
 """
 
 
+def insertion_sort(liste):
+    """
+    DESC: Trie en ordre croissant une liste de nombres entrée en paramètre,
+    basé sur l'algorithme 'insertion sort'.
+
+    RETOUR: Une liste de nombres triée en ordre croissant.
+    """
+    # faire une copie de la liste pour éviter de modifier l'originale
+    liste = liste + []
+    # sauter le premier élément de la liste, on considère qu'il est trié
+    for i in range(1, len(liste)):
+        # garder en mémoire l'élément actuel à insérer
+        actuel = liste[i]
+        # commencer avec l'élément à gauche de l'actuel
+        j = i - 1
+        # tant qu'il reste d'autres éléments à gauches et qu'ils sont plus élevés que l'actuel,
+        # les tasser d'une place vers la droite (pour créer un trou pour l'actuel)
+        while (j >= 0 and liste[j] > actuel):
+            liste[j + 1] = liste[j]
+            j -= 1
+        # insérer l'actuel au trou formé dans la liste
+        liste[j + 1] = actuel
+
+    return liste
+
+
 def affiche_stats(donnee_liste):
     """
     DESC: Fonction qui permet d'afficher les statistiques des données d'entrée et de sortie.
@@ -69,32 +95,3 @@ def affiche_stats(donnee_liste):
         mediane = liste_pt_valide[nb_pts_valides // 2]
 
     print("La médiane est :", round(mediane, 2))  # Deux décimales
-
-
-def insertion_sort(liste):
-    """
-    DESC: Met en ordre croissant une liste de nombres entrée en paramètre,
-    basé sur l'algorithme 'insertion sort'.
-
-    RETOUR: Une liste de nombres triée en ordre croissant.
-    """
-    # faire une copie de la liste pour éviter de modifier l'originale
-    liste = liste + []
-    # sauter le premier élément de la liste, on considère qu'il est trié
-    for i in range(1, len(liste)):
-        # garder en mémoire l'élément actuel à insérer
-        actuel = liste[i]
-        # commencer avec l'élément à gauche de l'actuel
-        j = i - 1
-        # tant qu'il reste d'autres éléments à gauches et qu'ils sont plus élevés que l'actuel,
-        # les tasser d'une place vers la droite (pour créer un trou pour l'actuel)
-        while (j >= 0 and liste[j] > actuel):
-            liste[j + 1] = liste[j]
-            j -= 1
-        # insérer l'actuel au trou formé dans la liste
-        liste[j + 1] = actuel
-
-    return liste
-
-
-print(insertion_sort([(3, "a"), (1, "x"), (3, "b")]))
