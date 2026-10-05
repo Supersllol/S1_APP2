@@ -5,6 +5,8 @@ Auteurs: Simon Lacroix et Vincent Duchesne
 Date: 07/10/2026
 """
 
+from analyse import insertion_sort
+
 
 #===========================================
 def filtre_min_max(points, distance_min=0.0, distance_max=15.0):
@@ -88,21 +90,17 @@ def filtre_mediane_mobile(points):
         # si c'est le premier ou dernier élément, garder le même point
         if ((index == 0) or (index == len(points) - 1)):
             points_filtres.append(points[index])
-        # sinon, prendre en compte le point original et les points précédent et suivant
         else:
-            premier, deuxieme, troisieme = points[
-                index - 1], points[index], points[index + 1]
+            # sinon, créer une liste avec le point et ses deux voisins
+            points_mediane = [
+                points[index - 1], points[index], points[index + 1]
+            ]
 
-            if (troisieme < premier < deuxieme
-                    or deuxieme < premier < troisieme):
-                mediane = premier
-            elif (premier < deuxieme < troisieme
-                  or troisieme < deuxieme < premier):
-                mediane = deuxieme
-            else:
-                mediane = troisieme
+            # mettre en ordre cette liste
+            points_mediane = insertion_sort(points_mediane)
 
-            points_filtres.append(mediane)
+            # prendre la 2e valeur sur 3 (celle au milieu)
+            points_filtres.append(points_mediane[1])
 
     # retourner le tableau de données filtrées
     return points_filtres

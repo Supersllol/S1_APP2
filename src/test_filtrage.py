@@ -127,6 +127,11 @@ def tests_filtre_mediane_mobile():
     test = filtrage.filtre_mediane_mobile(donnees)
     assert test == reponse, f"Erreur: {test} != {reponse}"
 
+    donnees = [0, 1, 1, 0]
+    reponse = [0, 1, 1, 0]
+    test = filtrage.filtre_mediane_mobile(donnees)
+    assert test == reponse, f"Erreur: {test} != {reponse}"
+
 
 #===========================================
 if __name__ == "__main__":
