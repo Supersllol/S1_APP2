@@ -16,6 +16,7 @@ import filtrage
 import interaction_usager
 import entree_sortie
 import analyse
+import sys
 
 #===========================================
 if __name__ == "__main__":
@@ -24,8 +25,16 @@ if __name__ == "__main__":
     """
     print("Test lidar (GRO120)")
 
-    # garder en mémoire le fichier d'entrée pour permettre une boucle
-    fichier_entree = ""
+    if (len(sys.argv) > 1):
+        # valider le fichier d'entrée passé par ligne de commande
+        fichier_entree = interaction_usager.valider_fichier_entree(sys.argv[1])
+        if (fichier_entree == ""):
+            print(
+                "Mauvais fichier entré par ligne de commande, veuillez réessayer."
+            )
+    else:
+        fichier_entree = ""
+
     while True:
         # demander le fichier d'entrée à l'utilisateur si la variable est vide
         # 1ère itération ou demande de l'usager de changer d'entrée

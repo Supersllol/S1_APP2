@@ -8,10 +8,26 @@ Date: 07/10/2026
 import os
 
 
+def valider_fichier_entree(fichier):
+    """
+    DESC: Fonction qui vérifie si le nom de fichier local entré par l'utilisateur est valide, en
+    s'assurant qu'il existe dans le répertoire d'entrée du programme.
+
+    RETOUR: Chemin du fichier dans le répertoire d'entrée s'il est valide, chaîne vide sinon.
+    """
+    # modifier la valeur entrée pour prendre en compte l'organisation des dossiers
+    # retourner au parent du dossier du script, pour aller chercher dans le répertoire entree
+    fichier = os.path.dirname(os.path.dirname(__file__)) + "/entree/" + fichier
+    # si le fichier existe à cet endroit, retourner la valeur
+    if (os.path.exists(fichier)):
+        return fichier
+    return ""
+
+
 def demander_fichier_entree():
     """
     DESC: Fonction qui demande à l'utilisateur le nom du fichier d'entrée, et qui 
-    redemande jusqu'à ce qu'il entre le nom d'un fichier qui existe à l'endroit recherché.
+    redemande jusqu'à ce qu'il entre le nom d'un fichier valide.
 
     RETOUR: Nom du fichier d'entrée.
     """
@@ -23,12 +39,9 @@ def demander_fichier_entree():
             + "au même niveau que le dossier parent de ce script.")
         fichier = input("Veuillez entrer le nom du fichier texte d'entrée: ")
 
-        # modifier la valeur entrée pour prendre en compte l'organisation des dossiers
-        # retourner au parent du dossier du script, pour aller chercher dans le répertoire entree
-        fichier = os.path.dirname(
-            os.path.dirname(__file__)) + "/entree/" + fichier
-        # si le fichier existe à cet endroit, retourner la valeur
-        if (os.path.exists(fichier)):
+        # si le fichier est valide, retourner la valeur
+        fichier = valider_fichier_entree(fichier)
+        if (fichier != ""):
             return fichier
         # sinon, recommencer la boucle
         else:
