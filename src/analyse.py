@@ -71,6 +71,10 @@ def affiche_stats(donnee_liste):
     # La longueur de la liste valide est le nombre de points valides
     nb_pts_valides = len(liste_pt_valide)
 
+    if (nb_pts_valides == 0):
+        print("Aucun point valide, aucune statistique à afficher.")
+        return
+
     # Afficher les nombres de points
     print("Le nombre de points valides est:", nb_pts_valides)
 
