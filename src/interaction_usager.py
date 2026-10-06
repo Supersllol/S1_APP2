@@ -56,12 +56,17 @@ def demander_fichier_sortie():
     RETOUR: Nom du fichier de sortie, placé dans le répertoire de sortie.
     """
     # Demander le nom du fichier de sortie et le placer dans le bon répertoire
-    fichier = input("Veuillez entrer le nom du fichier de sortie: ")
+    fichier = input(
+        "Veuillez entrer le nom du fichier de sortie, sans extension: ")
+
+    index_pt = fichier.find(".")
+    if (index_pt != -1):
+        fichier = fichier[:index_pt]
 
     # dans un répertoire sortie au même niveau que le répertoire contenant le script
     repertoire_sortie = os.path.dirname(os.path.dirname(__file__)) + "/sortie/"
-    # retourner le nom du fichier dans le bon répertoire
-    return repertoire_sortie + fichier
+    # retourner le nom du fichier dans le bon répertoire, avec l'extension .txt
+    return repertoire_sortie + fichier + ".txt"
 
 
 def demander_choix_algo():
