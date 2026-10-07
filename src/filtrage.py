@@ -18,24 +18,22 @@ def filtre_min_max(points, distance_min=0.5, distance_max=15.0):
     RETOUR: Tableau de données filtrées
     """
 
-    #créer un tableau vide afin d'y mettre la solution
+    # créer un tableau vide afin d'y mettre la solution
     points_filtre = []
 
-    #créer un boucle for afin de parcourir le tableau
+    # créer une boucle for afin de parcourir le tableau
     for i in range(len(points)):
-
-        #créer des conditions à l'aide de if, elif et else
-        #afin de changer la valeur si besoin
+        # remplacer la valeur par le minimum si elle est sous celui-ci
         if (points[i] < distance_min):
             points_filtre.append(-1)
-
+        # remplacer la valeur par le maximum si elle est au-dessus de celui-ci
         elif (points[i] > distance_max):
             points_filtre.append(distance_max)
-
+        # garder la valeur telle quelle
         else:
             points_filtre.append(points[i])
 
-    #Retourner points_filtre afin de ne pas modifier points qui est l'original
+    # Retourner la nouvelle liste filtrée
     return points_filtre
 
 

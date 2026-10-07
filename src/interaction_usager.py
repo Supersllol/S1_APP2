@@ -12,6 +12,7 @@ def valider_fichier_entree(fichier):
     """
     DESC: Fonction qui vérifie si le nom de fichier local entré par l'utilisateur est valide, en
     s'assurant qu'il existe dans le répertoire d'entrée du programme.
+    Le répertoire d'entrée est nommé "entree" et est placé au même niveau que le répertoire "src".
 
     RETOUR: Chemin du fichier dans le répertoire d'entrée s'il est valide, chaîne vide sinon.
     """
@@ -21,6 +22,7 @@ def valider_fichier_entree(fichier):
     # si le fichier existe à cet endroit, retourner la valeur
     if (os.path.exists(fichier)):
         return fichier
+    # sinon, retourner une chaîne vide pour signifier que c'est invalide
     return ""
 
 
@@ -59,11 +61,12 @@ def demander_fichier_sortie():
     fichier = input(
         "Veuillez entrer le nom du fichier de sortie, sans extension: ")
 
+    # si l'usager a entré une extension (avec un point), l'enlever
     index_pt = fichier.find(".")
     if (index_pt != -1):
         fichier = fichier[:index_pt]
 
-    # dans un répertoire sortie au même niveau que le répertoire contenant le script
+    # le répertoire de sortie est au même niveau que le répertoire contenant le script
     repertoire_sortie = os.path.dirname(os.path.dirname(__file__)) + "/sortie/"
     # retourner le nom du fichier dans le bon répertoire, avec l'extension .txt
     return repertoire_sortie + fichier + ".txt"
@@ -114,4 +117,5 @@ def demander_suite_programme():
         "\tN pour utiliser un nouveau fichier d'entrée\n" +
         "\tAutre pour quitter\n")
 
+    # en majuscules pour simplifier le traitement de données
     return userInput.upper()

@@ -71,6 +71,7 @@ def affiche_stats(donnee_liste):
     # La longueur de la liste valide est le nombre de points valides
     nb_pts_valides = len(liste_pt_valide)
 
+    # éviter des opérations invalides sur une liste vide
     if (nb_pts_valides == 0):
         print("Aucun point valide, aucune statistique à afficher.")
         return

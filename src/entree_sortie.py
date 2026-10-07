@@ -1,5 +1,5 @@
 """
-GRO120: Gestion d'entrée et de sortie pour les données de filtrage de lidar
+GRO120: Gestion des fichiers d'entrée et de sortie pour les données de filtrage de lidar
 
 Auteurs: Simon Lacroix et Vincent Duchesne
 Date: 07/10/2026

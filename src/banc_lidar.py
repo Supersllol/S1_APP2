@@ -25,6 +25,8 @@ if __name__ == "__main__":
     """
     print("Test lidar (GRO120)")
 
+    # 1er argument par ligne de commande est toujours le nom du script lui-même
+    # s'il y a plus qu'un argument l'usager passe le nom du fichier d'entrée
     if (len(sys.argv) > 1):
         # valider le fichier d'entrée passé par ligne de commande
         fichier_entree = interaction_usager.valider_fichier_entree(sys.argv[1])
@@ -37,7 +39,7 @@ if __name__ == "__main__":
 
     while True:
         # demander le fichier d'entrée à l'utilisateur si la variable est vide
-        # 1ère itération ou demande de l'usager de changer d'entrée
+        # 1ère itération, demande de l'usager de changer d'entrée, ou paramètre de ligne de commande invalide
         if (fichier_entree == ""):
             fichier_entree = interaction_usager.demander_fichier_entree()
         fichier_sortie = interaction_usager.demander_fichier_sortie()
